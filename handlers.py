@@ -35,7 +35,7 @@ async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 if isinstance(file_content, bytearray):
                     file_content = file_content.decode('utf-8')
 
-                print(f"Received file content (first 100 bytes): {file_content[:100]}")
+                # print(f"Received file content (first 100 bytes): {file_content[:100]}") # Debug
                 usernames = extract_usernames_from_html(file_content)
             except ValueError as e:
                 await update.message.reply_text(f"Error: {e}")
@@ -50,7 +50,7 @@ async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # Update the relevant list
             if state == "waiting_for_followers":
                 new_followers = usernames
-                update_user_data(user_id, new_followers, old_data['following'])  # Aggiorna solo i followers
+                update_user_data(user_id, new_followers, old_data['following'])
                 await update.message.reply_text("Followers list updated.")
 
                 # Calculate differences
@@ -69,7 +69,7 @@ async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             elif state == "waiting_for_following":
                 new_following = usernames
-                update_user_data(user_id, old_data['followers'], new_following)  # Aggiorna solo i following
+                update_user_data(user_id, old_data['followers'], new_following)
                 await update.message.reply_text("Following list updated.")
 
                 # Calculate differences
