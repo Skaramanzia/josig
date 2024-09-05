@@ -4,8 +4,8 @@ This bot interacts with Instagram followers and following lists using the Telegr
 
 ## Features
 
-- **Send Followers**: Upload an HTML file containing Instagram followers.
-- **Send Following**: Upload an HTML file containing Instagram accounts you are following.
+- **Send Followers**: Upload an HTML file containing Instagram followers. If the list isn't empty, you'll see who unfollowed you and who started following you since the last update.
+- **Send Following**: Upload an HTML file containing Instagram accounts you are following. If the list isn't empty, you'll see who you unfollowed and who you started following since the last update.
 - **Check Followers**: View the list of followers with a count.
 - **Check Following**: View the list of following accounts with a count.
 - **Empty Followers**: Clear the list of followers.
@@ -20,12 +20,12 @@ pip install -r requirements.txt
 
 ## Configuration
 
-1. Create a `settings.json` file in the project directory with the following format:
-
+1. Edit the `settings.json` file in the project directory with the following format:
+    `
     {
         "api_key": "YOUR_API_KEY"
     }
-
+    `
    Replace `"YOUR_API_KEY"` with your Telegram Bot API token.
 
 2. Initialize the SQLite database by running the bot script once. This will create the `user_data.db` file with the necessary tables.
